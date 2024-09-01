@@ -1,0 +1,11 @@
+node_modules
+*.zip
+upload_project.js
+
+._upload_project.js
+
+ipod
+
+*.pdf
+*.svg
+ProblemStatement.md
