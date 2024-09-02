@@ -26,7 +26,7 @@ export default function App() {
     <div className="App">
       <h3>Button Variants</h3>
       <div>
-        <h3>Outlined Button</h3>
+        <h3>Inlined Button</h3>
         <ButtonView>Outlined</ButtonView>
       </div>
       <div>
