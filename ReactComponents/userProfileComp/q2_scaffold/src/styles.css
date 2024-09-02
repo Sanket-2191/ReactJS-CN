@@ -1,0 +1,10 @@
+/* Write code for your CSS here */
+
+
+.skillsList{
+    list-style: none;
+}
+
+.skill{
+    display: inline-block;
+}
