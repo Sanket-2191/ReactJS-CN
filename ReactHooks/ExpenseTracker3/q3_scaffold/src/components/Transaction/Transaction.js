@@ -5,6 +5,11 @@ import DeleteImage from "../../images/trash-bin.png";
 
 const Transaction = ({ expense, deleteExpense, index }) => {
   const [currentHoverIndex, setCurrentHoverIndex] = useState(null);
+
+  const remove = () => deleteExpense({ type: "REMOVE", id: expense.id })
+
+  const update = () => updateExpense({ type: "UPDATE", text:})
+
   return (
     <li
       key={expense.id}
@@ -34,7 +39,7 @@ const Transaction = ({ expense, deleteExpense, index }) => {
           </div>
           <div
             className={styles.delete}
-            onClick={() => deleteExpense(expense.id)}
+            onClick={remove}
           >
             <img src={DeleteImage} height="100%" alt="Delete" />
           </div>

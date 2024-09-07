@@ -7,15 +7,15 @@ import "./App.css";
 function App() {
   const [expenses, setExpenses] = useState([]);
 
-  // Create function to add an expense
   const addExpense = (expense) => {
-    setExpenses([expense, ...expenses]);
-  }
+    setExpenses((prevState) => [expense, ...prevState]);
+  };
 
-  // Create function to delete an expense
-  const removeExpense = (id) => {
-    setExpenses(expenses.filter((e) => e.id !== id))
-  }
+  const deleteExpense = (id) => {
+    setExpenses((prevExpenses) => {
+      return prevExpenses.filter((expense) => expense.id !== id);
+    });
+  };
 
   return (
     <>
@@ -24,7 +24,7 @@ function App() {
         <ExpenseForm addExpense={addExpense} />
         <div className="expenseContainer">
           <ExpenseInfo expenses={expenses} />
-          <ExpenseList expenses={expenses} removeExpense={removeExpense} />
+          <ExpenseList expenses={expenses} deleteExpense={deleteExpense} />
         </div>
       </div>
     </>

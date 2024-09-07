@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./ExpenseForm.module.css";
 
-const ExpenseForm = ({ addExpense }) => {
+const ExpenseForm = (props) => {
   const expenseTextInput = useRef();
   const expenseAmountInput = useRef();
 
@@ -18,7 +18,8 @@ const ExpenseForm = ({ addExpense }) => {
       amount: expenseAmount,
       id: new Date().getTime()
     };
-    addExpense(expense);
+    // Add expense here
+    props.addExpense({ type: "ADD", expense })
     clearInput();
     return;
   };
@@ -52,7 +53,7 @@ const ExpenseForm = ({ addExpense }) => {
         ref={expenseAmountInput}
         required
       />
-      <button className={styles.submitBtn}>Add Transaction</button>
+      <button className={styles.submitBtn} type="submit">Add Transaction</button>
     </form>
   );
 };
