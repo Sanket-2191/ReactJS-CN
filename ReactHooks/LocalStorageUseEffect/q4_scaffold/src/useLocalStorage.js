@@ -1,18 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const useLocalStorage = (key, defaultValue) => {
-  // Get stored value from localStorage
-  const getStoredValue = () => {
-    const storedValue = window.localStorage.getItem(key);
-    return storedValue ? JSON.parse(storedValue) : defaultValue;
-  };
+  const [value, setValue] = useState(() => {
+    const jsonValue = localStorage.getItem(key);
 
-  // State to store the person object
-  const [value, setValue] = useState(getStoredValue);
+    if (!jsonValue) return defaultValue;
 
-  // Update localStorage whenever the value changes
+    return JSON.parse(jsonValue);
+  });
+
   useEffect(() => {
-    window.localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(key, JSON.stringify(value));
   }, [key, value]);
 
   return [value, setValue];

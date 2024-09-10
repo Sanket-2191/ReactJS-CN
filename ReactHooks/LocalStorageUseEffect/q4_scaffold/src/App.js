@@ -1,10 +1,11 @@
 import "./styles.css";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useLocalStorage from "./useLocalStorage";
 
 export default function App() {
   // Use the custom local storage hook to get person object and setter
-  const [person, setPerson] = useLocalStorage("person", { name: "", age: 1 });
+  const [name, setName] = useLocalStorage("name", "");
+  const [age, setAge] = useLocalStorage("age", 1);
 
   const nameInput = useRef();
   const ageInput = useRef();
@@ -16,19 +17,18 @@ export default function App() {
 
   const handleChange = (e) => {
     e.preventDefault();
-    const name = nameInput.current.value;
-    const age = ageInput.current.value;
+    setName(nameInput.current.value);
+    setAge(ageInput.current.value);
 
     // Set the name and age using setPerson
-    setPerson({ name, age });
 
     handleClear();
   };
 
   return (
     <div className="App">
-      <div id="name">Name - {person.name}</div>
-      <div id="age">Age - {person.age}</div>
+      <div id="name">Name - {name}</div>
+      <div id="age">Age - {age}</div>
       <form onSubmit={handleChange}>
         <input placeholder="Name" ref={nameInput} />
         <input placeholder="Age" type="number" min="1" ref={ageInput} />
