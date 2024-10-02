@@ -1,0 +1,49 @@
+// import { Link } from 'react-router-dom';
+
+// export const Navbar = () => {
+//   return (
+//     <div>
+//       <div className="navbar">
+//         <img
+//           src="https://cdn-icons-png.flaticon.com/512/3176/3176363.png"
+//           alt="logo"
+//           onClick={() => window.location.replace("/")}
+//         />
+
+//         <nav>
+//           <Link to="/">Home</Link>
+//           <Link to="/list">List</Link>
+//           <Link to="/contact">Contact</Link>
+//         </nav>
+//       </div>
+//     </div>
+//   );
+// };
+
+
+import { NavLink, Outlet } from "react-router-dom";
+// Do the necessary modification in this file.
+export const Navbar = () => {
+  return (
+    <div>
+      <div className="navbar">
+        <img
+          src="https://cdn-icons-png.flaticon.com/512/3176/3176363.png"
+          alt="logo"
+          onClick={() => window.location.replace("/")}
+        />
+
+        <nav>
+          {/* use NavLink inplace of Link to set the style to the active links */}
+          <NavLink style={({ isActive }) => isActive ? { border: '2px solid #fff', backgroundColor: '#e1d1f976' } : null}
+            to="/">Home</NavLink>
+          <NavLink style={({ isActive }) => isActive ? { border: '2px solid #fff', backgroundColor: '#e1d1f976' } : null}
+            to="/list">List</NavLink>
+          <NavLink style={({ isActive }) => isActive ? { border: '2px solid #fff', backgroundColor: '#e1d1f976' } : null}
+            to="/contact">Contact</NavLink>
+        </nav >
+      </div >
+      <Outlet />
+    </div >
+  );
+};
